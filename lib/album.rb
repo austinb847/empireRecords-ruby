@@ -1,4 +1,5 @@
 # backend
+require('pry')
 
 class Album
   attr_reader :id, :name
@@ -22,6 +23,11 @@ class Album
 
   def self.find(id)
     @@albums[id]
+  end
+
+  def self.search(name)
+    albums = self.all()
+    albums.find{|album| album.name.match(/#{name}/)}
   end
 
   def save
